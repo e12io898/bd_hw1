@@ -1,13 +1,13 @@
 -- Жанры
 create table Genres(
 	genre_id SERIAL primary key,
-	denre_title varchar(30) not null
+	genre_title varchar(30) not null
 );
 
 -- Исполнители
 create table Musicians(
 	musician_id SERIAL primary key,
-	name varchar(50) not null
+	mus_name varchar(50) not null
 );
 
 -- Жанр - Исполнитель

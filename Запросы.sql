@@ -21,15 +21,17 @@ select mus_name
 -- 2.5
 select track_title
   from tracks
- where lower(track_title) like 'my %'
+ where lower(track_title) like 'my'
+    or lower(track_title) like 'my %'
     or lower(track_title) like '% my'
     or lower(track_title) like '% my %';
 
 -- 3.1
-  select genre_id, count(*)
-    from genres_musicians
-group by genre_id
-order by count(musician_id) desc;
+  select genre_title, count(*)
+    from genres g
+    join genres_musicians gm on g.genre_id = gm.genre_id
+group by g.genre_id
+order by count(musician_id);
 
 -- 3.2
 select count(*) as track_count
@@ -41,14 +43,17 @@ select count(*) as track_count
   select album_id, avg(duration)
     from tracks
 group by album_id
-order by album_id asc;
+order by album_id;
 
 -- 3.4
 select mus_name
-  from musicians m
-  join musicians_albums ma on m.musician_id = ma.musician_id
-  join albums on ma.album_id = albums.album_id
- where album_release_year != 2020;
+  from musicians
+ where mus_name not in (
+	select mus_name
+  	from musicians m
+  	join musicians_albums ma on m.musician_id = ma.musician_id
+  	join albums a on ma.album_id = a.album_id
+ 	where album_release_year = 2020);
 
 -- 3.5
 select distinct collection_title

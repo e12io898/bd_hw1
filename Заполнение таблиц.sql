@@ -1,5 +1,5 @@
 -- Исполнители
-insert into musicians (name)
+insert into musicians (mus_name)
 values
 ('Ария'), ('Король и Шут'), ('Аффинаж'), ('Дайте танк!'),
 ('4 позиции Бруно'), ('Митя Фомин'), ('Филипп Киркоров'),
@@ -51,13 +51,6 @@ values
 (1, 2), (2, 2), (3, 2), (4, 2), (5, 1), (6, 1),
 (10, 1), (12, 1), (9, 1), (7, 3), (8, 3), (1, 4),
 (4, 4), (10, 4), (5, 4), (12, 5), (12, 6), (6, 6)
-
--- исправления некоторые
- alter table tracks 
-alter column duration type float;
-
-  alter table musicians
-rename column name to mus_name;
 
 
 
